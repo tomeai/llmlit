@@ -1,24 +1,14 @@
-import contextlib
-
 import uvicorn
 from fastapi import FastAPI
+from pymilvus import connections
 from starlette import status
 
+from config.settings import settings
 from db.mysql import account_database
 from router import disk
 
-
-@contextlib.asynccontextmanager
-async def lifespan(app):
-    async with account_database.connect():
-        print("Run at startup!")
-        yield
-        print("Run on shutdown!")
-
-
 app = FastAPI(
-    lifespan=lifespan,
-    root_path='/agent/v1',
+    root_path='/api/v1',
     servers=[
         {
             "url": "http://39.107.54.241:8989/agent/v1",
@@ -43,20 +33,20 @@ def healthz():
     return "OK"
 
 
-# @app.on_event("startup")
-# async def startup_db():
-#     print("Startup event is triggered.")
-#     await account_database.connect()
-#     connections.connect(host=MILVUS_HOST, port=MILVUS_PORT, alias="default")
-#     print("Startup event is done.")
-#
-#
-# @app.on_event("shutdown")
-# async def shutdown_db():
-#     print("shutdown event is triggered.")
-#     await account_database.disconnect()
-#     connections.disconnect(alias="default")
-#     print("shutdown event is done.")
+@app.on_event("startup")
+async def startup_db():
+    print("Startup event is triggered.")
+    await account_database.connect()
+    connections.connect(host=settings.MILVUS_HOST, port=settings.MILVUS_PORT, alias="default", db_name='opentome')
+    print("Startup event is done.")
+
+
+@app.on_event("shutdown")
+async def shutdown_db():
+    print("shutdown event is triggered.")
+    await account_database.disconnect()
+    connections.disconnect(alias="default")
+    print("shutdown event is done.")
 
 
 app.include_router(disk.router)
