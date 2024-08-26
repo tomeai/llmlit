@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "myinterface"
+version = "0.1.0"
+description = ""
+authors = ["fovegage <fovegage@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.112.2"
+pymilvus = "^2.4.5"
+databases = "^0.9.0"
+uvicorn = "^0.30.6"
+openai = "^1.42.0"
+langchain = "^0.2.14"
+langchain-community = "^0.2.12"
+langchain-openai = "^0.1.22"
+langchain-core = "^0.2.35"
+sqlalchemy = "^2.0.32"
+aiomysql = "^0.2.0"
+dashscope = "^1.20.4"
+langfuse = "^2.44.1"
+zhipuai = "^2.1.4.20230814"
+pydantic-settings = "^2.4.0"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
