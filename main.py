@@ -5,7 +5,7 @@ from starlette import status
 
 from config.settings import settings
 from db.mysql import account_database
-from router import disk
+from router import disk, account
 
 app = FastAPI(
     root_path='/api/v1',
@@ -50,6 +50,7 @@ async def shutdown_db():
 
 
 app.include_router(disk.router)
+app.include_router(account.router)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8001)

@@ -17,7 +17,7 @@ client = MilvusClient(
 
 def create_disk_index():
     """
-    {'name': '刘继卣-战国故事（插图）.pdf', 'share_name': '幻*倾城', 'source': '1', 'type': 1, 'path': 'e9-Ppxu4HYeyi9kWHxHhJA', 'pwd': 'o866', 'third_id': 'ysedsl2r', 'insert_time': '2022-05-29 20:11:08', 'create_time': 1623814610}}
+    {'name': '刘继卣-战国故事（插图）.pdf', 'share_name': '幻*倾城', 'source': '1', 'type': 1, 'path': 'e9-Ppxu4HYeyi9kWHxHhJA', 'pwd': 'o866', 'third_id': 'ysedsl2r', 'insert_time': '2022-05-29 20:11:08', 'create_time': 1623814610}
     :return:
     """
     # 不使用动态字段, 默认使用动态字段

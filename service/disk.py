@@ -11,6 +11,12 @@ class DiskService:
         self.collection = Collection(name="disk_info_v1")
         self.ranker = RRFRanker()
 
+    def query(self):
+        """
+        查询资源详情
+        :return:
+        """
+
     def hybrid(self, query: str, top_k: int):
         search_param = {
             "data": [self.embedding.embed_query(query)],
