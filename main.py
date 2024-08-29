@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from pymilvus import connections
 from starlette import status
 
-from config.settings import settings
+from settings import settings
 from db.mysql import account_database
 from router import disk, account
 

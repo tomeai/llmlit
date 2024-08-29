@@ -2,7 +2,7 @@ from typing import List
 
 from zhipuai import ZhipuAI
 
-from config.settings import settings
+from settings import settings
 
 
 class ZhiPuEmbedding:
