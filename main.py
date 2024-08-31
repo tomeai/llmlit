@@ -8,13 +8,7 @@ from db.mysql import account_database
 from router import disk, account
 
 app = FastAPI(
-    root_path='/api/v1',
-    servers=[
-        {
-            "url": "http://39.107.54.241:8989/agent/v1",
-            "description": "Production server"
-        }
-    ],
+    root_path='/opentome/api/v1'
 )
 
 

@@ -6,7 +6,7 @@ metadata:
   labels:
     app: myinterface
 spec:
-  replicas: 3
+  replicas: 1
   revisionHistoryLimit: 10
   strategy:
     rollingUpdate:
@@ -30,7 +30,7 @@ spec:
       imagePullSecrets:
         - name: codeup-registry
       containers:
-        - image: registry.cn-beijing.aliyuncs.com/biyao/spider:myinterface-v1
+        - image: registry.cn-beijing.aliyuncs.com/biyao/spider:myinterface-v2
           imagePullPolicy: IfNotPresent
           name: myinterface
           readinessProbe:
@@ -46,6 +46,27 @@ spec:
             - 0.0.0.0
             - --port
             - "8000"
+          env:
+            - name: MILVUS_HOST
+              value: 10.9.244.134
+            - name: MILVUS_PORT
+              value: '19530'
+            - name: MILVUS_DISK_INFO
+              value: disk_info_v1
+            - name: OPENAI_BASE_URL
+              value: http://oneapi-api.model:3000/v1
+            - name: OPENAI_API_KEY
+              value: sk-xIC3OACY38ZkPWsk334639E482294b8e8a093c550570F9C9
+            - name: MYSQL_USERNAME
+              value: root
+            - name: MYSQL_PASSWORD
+              value: A1n9Z*+6S-_wF05J2i
+            - name: MYSQL_HOST
+              value: 10.9.244.133
+            - name: MYSQL_PORT
+              value: '3390'
+            - name: ZHIPU_API_KEY
+              value: 4db7d8ee4b10c5909ee4dd532185ba95.JeiZeNSwhL04PIGn
           volumeMounts:
             - name: timezone
               mountPath: /etc/localtime
@@ -70,6 +91,5 @@ spec:
   ports:
     - name: http
       port: 8000
-      nodePort: 30896
       protocol: TCP
       targetPort: http

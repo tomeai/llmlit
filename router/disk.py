@@ -20,7 +20,7 @@ async def disk_info():
     notice = '支持正版，严厉打击各类资源贩子，欢迎举报问题资源！'
     tips = '红盘搜索不储存、复制、传播任何文件，内容均由网络爬虫自动抓取'
     wx_pic = 'https://img.alicdn.com/tfs/TB1UdKEM6TpK1RjSZKPXXa3UpXa-256-256.png'
-    keys = ['python', 'golang']
+    keys = ['python', 'golang', 'java']
     hot_list = {
         'hot_time': '2021-05-02 12:12:12',
         'hot_resource': [{
