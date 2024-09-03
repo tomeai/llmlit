@@ -3,9 +3,9 @@ from fastapi import FastAPI
 from pymilvus import connections
 from starlette import status
 
-from settings import settings
 from db.mysql import account_database
 from router import disk, account
+from settings import settings
 
 app = FastAPI(
     root_path='/opentome/api/v1'
